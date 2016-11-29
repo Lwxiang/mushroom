@@ -8,12 +8,12 @@ from listener.settings import appToken
 
 def handler(request):
     """
-    we-chat backend handler
+    wechat backend handler
     :param request:
     :return:
     """
     if request.method == "GET":
-        # we-chat server signature
+        # wechat server signature
         signature = request.GET.get('signature', '')
         timestamp = request.GET.get('timestamp', '')
         nonce = request.GET.get('nonce', '')
@@ -24,4 +24,12 @@ def handler(request):
         else:
             return HttpResponse('INVALID')
     else:
-        pass
+        # text from user
+        body_text = request.body
+        wechat = WechatBasic(token=appToken)
+        wechat.parse_data(body_text)
+
+        # get wechat message
+        message = wechat.get_message()
+
+

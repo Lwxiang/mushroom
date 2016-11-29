@@ -104,11 +104,11 @@ STATIC_URL = '/static/'
 
 
 # APP DATA
-grant_type = ''
+grant_type = 'client_credential'
 
-appID = ''
+appID = 'wx4728693d529617c5'
 
-appSecret = ''
+appSecret = '1874bb440a7ba2efdb973e5991c6b172'
 
-appToken = ''
+appToken = 'iamnotbaka'
 

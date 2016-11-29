@@ -86,6 +86,12 @@ def magnet2torrent(magnet, output_name=None):
 
     return output
 
+
+def test():
+    test_magnet = "magnet:?xt=urn:btih:47a0cca77abb8a9a276f505de6797d0a4a417273&dn=%5BHYSUB%5Dhisutoria_%E5%AE%AB%E6%AD%A6%E5%A4%96%E9%AA%A8+%E5%8F%8D%E9%AA%A8%E7%9A%84%E6%96%97%E5%A3%AB%5B704x396%5D%5BX264_MP3%5D"
+    out = magnet2torrent(test_magnet)
+    print out
+
 def main():
     parser = ArgumentParser(description="A command line tool that converts magnet links in to .torrent files")
     parser.add_argument('-m','--magnet', help='The magnet url')

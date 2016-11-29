@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from wechat_sdk import WechatBasic
 
 from listener.settings import appToken
+from Magnet2Torrent.Magnet_To_Torrent2 import magnet2torrent
 
 
 def handler(request):
@@ -23,13 +24,21 @@ def handler(request):
             return HttpResponse(echostr)
         else:
             return HttpResponse('INVALID')
-    else:
-        # text from user
-        body_text = request.body
-        wechat = WechatBasic(token=appToken)
-        wechat.parse_data(body_text)
 
-        # get wechat message
-        message = wechat.get_message()
+    # text from user
+    body_text = request.body
+    wechat = WechatBasic(token=appToken)
+    wechat.parse_data(body_text)
+
+    # get wechat message
+    message = wechat.get_message()
+
+    if message.type != 'text':
+        return wechat.response_text(u'说人话')
+
+    out = magnet2torrent(message.content)
+    return wechat.response_text(out)
+
+
 
 

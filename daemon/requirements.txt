@@ -1,0 +1,4 @@
+# -*- coding: utf-8 -*-
+
+requests==2.11.1
+celery==4.0.0

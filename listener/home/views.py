@@ -40,6 +40,8 @@ def handler(request):
 
     # check if magnet
     if message.content.startswith("magnet:?xt=urn:btih:"):
+        if Work.objects.filter(magnet=message.content):
+            return HttpResponse(wechat.response_text(u'已经添加过这个链接了'))
         work = Work(magnet=message.content, operate=Operator.DOWNLOAD)
         work.save()
         return HttpResponse(wechat.response_text(u'链接已添加！回复【%s】显示详情。' % keyword_check))

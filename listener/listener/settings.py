@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 """
 Django settings for listener project.
 
@@ -9,7 +10,6 @@ https://docs.djangoproject.com/en/1.8/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
@@ -112,3 +112,9 @@ appSecret = '1874bb440a7ba2efdb973e5991c6b172'
 
 appToken = 'iamnotbaka'
 
+
+# APP KEY WORD
+keyword_check = u'查'
+keyword_download = u'下'
+keyword_pause = u'停'
+keyword_remove = u'删'

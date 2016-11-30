@@ -6,6 +6,7 @@
 DELUGE_COMMAND = 'deluge-console'
 
 INFO_HEADS = (
+    'Name',
     'ID',
     'State',
     'Seeds',

@@ -31,7 +31,7 @@ from time import sleep
 from argparse import ArgumentParser
 
 
-def magnet2torrent(magnet, output_name=None):
+def magnet2torrent(magnet, output_name="torrents/"):
     if output_name and \
             not pt.isdir(output_name) and \
             not pt.isdir(pt.dirname(pt.abspath(output_name))):

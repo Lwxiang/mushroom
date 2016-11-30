@@ -121,4 +121,4 @@ keyword_remove = u'删'
 
 
 # Search URL
-search_url = "http://www.torrentkittyjx.org/s/"
+search_url = "http://www.torrentkittyjx.org/"

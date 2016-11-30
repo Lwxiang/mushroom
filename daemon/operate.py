@@ -22,7 +22,7 @@ class Deluge(object):
         now = len(self.data)
         self.get_info()
         if self.data > now:
-            self.data[-1]['magnet'] = magnet
+            self.data[-1]['Magnet'] = magnet
             return True
         return False
 
@@ -46,7 +46,7 @@ class Deluge(object):
         magnet = data.get('magnet', '')
         operate = data.get('operate', '')
         for d in self.data:
-            if d.get('magnet', '') == magnet:
+            if d.get('Magnet', '') == magnet:
                 pass
                 return
 

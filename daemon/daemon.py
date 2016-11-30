@@ -8,6 +8,7 @@ from settings import URL, HEADER
 
 
 def post_data(data):
+    print data
     r = requests.post(url=URL, json=data)
     return r.json()
 

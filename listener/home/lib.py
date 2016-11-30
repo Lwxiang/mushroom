@@ -3,11 +3,14 @@
 import requests
 from bs4 import BeautifulSoup
 
-from listener.settings import search_url
+try:
+    from listener.settings import search_url
+except ImportError:
+    search_url = "http://www.torrentkittyjx.org/"
 
 
-def get_magnet_from_keyword(keyword, site_url=search_url):
-    url = site_url + 's/' + keyword
+def get_magnet_from_keyword(keyword):
+    url = search_url + 's/' + keyword
     r = requests.get(url=url)
     soup = BeautifulSoup(r.text)
     a = soup.article.find_all('a')
@@ -15,7 +18,7 @@ def get_magnet_from_keyword(keyword, site_url=search_url):
         return ''
     try:
         target = a['href']
-        url2 = site_url + target
+        url2 = search_url + target
         r2 = requests.get(url=url2)
         soup2 = BeautifulSoup(r2.text)
         target = soup2.find(id="magnetLink").text
@@ -26,7 +29,7 @@ def get_magnet_from_keyword(keyword, site_url=search_url):
 
 def test():
     keyword = u'航海王'
-    print get_magnet_from_keyword(keyword, "http://www.torrentkittyjx.org/")
+    print get_magnet_from_keyword(keyword)
 
 
 if __name__ == '__main__':

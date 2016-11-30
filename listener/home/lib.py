@@ -22,3 +22,12 @@ def get_magnet_from_keyword(keyword):
         return target
     except (Exception,):
         return ''
+
+
+def test():
+    keyword = u'航海王'
+    print get_magnet_from_keyword(keyword)
+
+
+if __name__ == '__main__':
+    test()

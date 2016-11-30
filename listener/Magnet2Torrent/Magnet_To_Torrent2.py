@@ -88,8 +88,8 @@ def magnet2torrent(magnet, output_name=None):
 
 
 def test():
-    test_magnet = "magnet:?xt=urn:btih:776bcaaef7b8013a5355d2786d2c2cd3aa7d213e&dn=%E9%AD%94%E5%B0%8E%E5%B0%91%E5%B9%B4%28%E5%A6%96%E7%B2%BE%E7%9A%84%E5%B0%BE%E5%B7%B4%29%E6%BC%AB%E7%95%AB%28%E7%AC%AC01%7E25%E9%9B%86%2B%E6%BC%A2%E5%8C%96%E7%89%88214%7E275%E8%A9%B1%29%28%E7%BA%8C%E5%BE%85%29"
-    out = magnet2torrent(test_magnet, 'test.torrent')
+    test_magnet = "magnet:?xt=urn:btih:BFEFB51F4670D682E98382ADF81014638A25105A&dn=openSUSE+13.2+DVD+x86_64.iso&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80&tr=udp%3A%2F%2Ftracker.publicbt.com%3A80&tr=udp%3A%2F%2Ftracker.ccc.de%3A80"
+    out = magnet2torrent(test_magnet)
     print out
 
 def main():

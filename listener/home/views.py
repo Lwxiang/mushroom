@@ -42,14 +42,13 @@ def handler(request):
     content = message.content
     # if search
     if content.startswith(u"搜:"):
-        print content[2:]
         content = get_magnet_from_keyword(content[2:])
 
     # check if magnet
     if content.startswith("magnet:?xt=urn:btih:"):
-        if Work.objects.filter(magnet=message.content):
+        if Work.objects.filter(magnet=content):
             return HttpResponse(wechat.response_text(u'已经添加过这个链接了'))
-        work = Work(magnet=message.content, operate=Operator.DOWNLOAD)
+        work = Work(magnet=content, operate=Operator.DOWNLOAD)
         work.save()
         return HttpResponse(wechat.response_text(u'链接已添加！回复【%s】显示详情。' % keyword_check))
 

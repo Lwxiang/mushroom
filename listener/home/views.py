@@ -47,14 +47,14 @@ def handler(request):
     # user check
     if message.content == keyword_check:
         works = Work.objects.filter(is_removed=False).order_by('-create_time')
-        work_list = u'任务详情：\n'
+        work_list = u'任务详情：\n\n'
         for index, work in enumerate(works):
             name = work.name if work.name else u'名字解析中'
             speed = work.down_speed
             progress = work.progress
             operate = work.get_operate_name()
-            work_list += "%d. %s [%s] [%s] [%s]\n" % (index, name, speed, progress, operate)
-        work_list += u'回复【%s】=下载，【%s】=暂停，【%s】=删除，后跟相应数字' % (
+            work_list += "%d. %s [%s] [%s] [%s]\n" % (index+1, name, speed, progress, operate)
+        work_list += u'\n回复【%s】下载，【%s】暂停，【%s】删除，后跟相应数字' % (
             keyword_download, keyword_pause, keyword_remove)
         return HttpResponse(wechat.response_text(work_list))
 

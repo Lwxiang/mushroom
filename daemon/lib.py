@@ -50,4 +50,4 @@ def parse_from_deluge_raw(raw):
         elif raw_cell.startswith('Progress'):
             single['Progress'] = raw_cell.split(' ')[1]
 
-    return data
+    return reversed(data)

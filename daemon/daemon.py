@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import os
+import json
 
 import requests
 
@@ -9,7 +9,7 @@ from settings import URL, HEADER
 
 def post_data(data):
     r = requests.post(url=URL, json=data)
-    print r
+    return json.loads(r.json())
 
 
 def main():
@@ -17,7 +17,11 @@ def main():
 
     while True:
         deluge.get_info()
-        post_data(deluge.data)
+        result_data = post_data(deluge.data)
+        if result_data.get('result', False):
+            data = result_data.get('data', [])
+            for d in data:
+                deluge.update(d)
         break
 
 

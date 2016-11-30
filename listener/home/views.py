@@ -94,4 +94,4 @@ def monitor(request):
             'magnet': single_work.magnet,
             'operate': single_work.operate
         })
-    return HttpResponse(json.dumps({'result': True, 'message': 'Success', 'data': json.dumps(data)}))
+    return HttpResponse(json.dumps({'result': True, 'message': 'Success', 'data': data}))

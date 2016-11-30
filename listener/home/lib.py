@@ -17,7 +17,7 @@ def get_magnet_from_keyword(keyword):
     if len(a) == 0:
         return ''
     try:
-        target = a['href']
+        target = a[0]['href']
         url2 = search_url + target
         r2 = requests.get(url=url2)
         soup2 = BeautifulSoup(r2.text)

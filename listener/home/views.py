@@ -6,6 +6,7 @@ from wechat_sdk import WechatBasic
 
 from listener.settings import appToken, keyword_check, keyword_download, keyword_pause, keyword_remove
 from models import Operator, Work
+from lib import get_magnet_from_keyword
 
 
 def handler(request):
@@ -38,8 +39,13 @@ def handler(request):
     if message.type != 'text':
         return HttpResponse(wechat.response_text(u'说人话'))
 
+    content = message.content
+    # if search
+    if content.startswith(u"搜:"):
+        content = get_magnet_from_keyword(content[2:])
+
     # check if magnet
-    if message.content.startswith("magnet:?xt=urn:btih:"):
+    if content.startswith("magnet:?xt=urn:btih:"):
         if Work.objects.filter(magnet=message.content):
             return HttpResponse(wechat.response_text(u'已经添加过这个链接了'))
         work = Work(magnet=message.content, operate=Operator.DOWNLOAD)
@@ -47,7 +53,7 @@ def handler(request):
         return HttpResponse(wechat.response_text(u'链接已添加！回复【%s】显示详情。' % keyword_check))
 
     # user check
-    if message.content == keyword_check:
+    if content == keyword_check:
         works = Work.objects.filter(is_removed=False).order_by('-create_time')
         work_list = u'任务详情：\n\n'
         for index, work in enumerate(works):

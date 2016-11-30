@@ -118,3 +118,7 @@ keyword_check = u'查'
 keyword_download = u'下'
 keyword_pause = u'停'
 keyword_remove = u'删'
+
+
+# Search URL
+search_url = "http://www.torrentkittyjx.org/s/"

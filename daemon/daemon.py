@@ -9,7 +9,7 @@ from settings import URL, HEADER
 
 def post_data(data):
     r = requests.post(url=URL, json=data)
-    return json.loads(r.json())
+    return r.json()
 
 
 def main():

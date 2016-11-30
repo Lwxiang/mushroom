@@ -14,8 +14,9 @@ class Deluge(object):
         self.data = []
 
     def add_new_work(self, magnet):
+
         # Add a new magnet
-        process = subprocess.Popen([self.command, "\"add %s\"" % magnet], stdout=subprocess.PIPE, shell=True)
+        process = subprocess.Popen([self.command, "add", "\"%s\"" % magnet], stdout=subprocess.PIPE, shell=True)
         process.communicate()
 
         now = len(self.data)

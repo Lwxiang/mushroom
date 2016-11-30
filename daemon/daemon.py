@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import json
+from time import sleep
 
 import requests
 
@@ -22,7 +22,7 @@ def main():
             data = result_data.get('data', [])
             for d in data:
                 deluge.update(d)
-        break
+        sleep(5)
 
 
 if __name__ == "__main__":

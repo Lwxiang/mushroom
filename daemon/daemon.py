@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import json
 from time import sleep
 
 import requests
@@ -9,7 +10,7 @@ from settings import URL, HEADER
 
 def post_data(data):
     print data
-    r = requests.post(url=URL, json=data)
+    r = requests.post(url=URL, data={"data": json.dumps(data)})
     return r.json()
 
 
@@ -23,6 +24,7 @@ def main():
             data = result_data.get('data', [])
             for d in data:
                 deluge.update(d)
+
         sleep(5)
 
 

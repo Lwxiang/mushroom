@@ -28,6 +28,7 @@ def parse_from_deluge_raw(raw):
             single['ID'] = raw_cell[4:]
         elif raw_cell.startswith('State'):
             state = raw_cell.split(' ')[1]
+            single['State'] = state
             if state == 'Downloading':
                 speed = raw_cell.split(' ')
                 single['SpeedDown'] = speed[4] + ' ' + speed[5]

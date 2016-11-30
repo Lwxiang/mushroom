@@ -20,7 +20,7 @@ INFO_SPLIT = "\r\n"
 
 # Server Settings
 
-URL = "http://139.199.64.119/monitor/"
+URL = "http://127.0.0.1:8000/monitor/"
 
 HEADER = {
     'content-type': 'application/json'

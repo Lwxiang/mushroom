@@ -73,13 +73,14 @@ def monitor(request):
         return HttpResponse(json.dumps({'result': False, 'message': 'post required', 'data': {}}))
 
     try:
-        post_data = json.loads(request.POST.get('data', '[]'))
+        post_data = json.loads(request.POST.get('data', []))
     except (Exception,):
         return HttpResponse(json.dumps({'result': False, 'message': 'params invalid', 'data': {}}))
 
     # post data
     for single_data in post_data:
         magnet = single_data.get('Magnet', '')
+        print magnet
         try:
             work = Work.objects.get(magnet=magnet)
             work.update_params(single_data)

@@ -42,6 +42,7 @@ def handler(request):
     content = message.content
     # if search
     if content.startswith(u"搜:"):
+        print content[2:]
         content = get_magnet_from_keyword(content[2:])
 
     # check if magnet

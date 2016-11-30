@@ -9,7 +9,6 @@ from settings import URL, HEADER
 
 
 def post_data(data):
-    print data
     r = requests.post(url=URL, data={"data": json.dumps(data)})
     return r.json()
 

@@ -80,7 +80,6 @@ def monitor(request):
     # post data
     for single_data in post_data:
         magnet = single_data.get('Magnet', '')
-        print magnet
         try:
             work = Work.objects.get(magnet=magnet)
             work.update_params(single_data)

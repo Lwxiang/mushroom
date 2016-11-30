@@ -36,6 +36,7 @@ def handler(request):
     if message.type != 'text':
         return HttpResponse(wechat.response_text(u'说人话'))
 
+    
     out = magnet2torrent(message.content)
     return HttpResponse(wechat.response_text(out))
 

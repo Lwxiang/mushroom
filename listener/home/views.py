@@ -39,7 +39,7 @@ def handler(request):
         return HttpResponse(wechat.response_text(u'说人话'))
 
     # check if magnet
-    if message.content.startswidth("magnet:?xt=urn:btih:"):
+    if message.content.startswith("magnet:?xt=urn:btih:"):
         work = Work(magnet=message.content, operate=Operator.DOWNLOAD)
         work.save()
         return HttpResponse(wechat.response_text(u'链接已添加！回复【%s】显示详情。' % keyword_check))
